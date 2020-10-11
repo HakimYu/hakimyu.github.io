@@ -16,6 +16,7 @@
 </head>
 
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar">
+  <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
       <a onclick="drawerawa();" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
@@ -27,16 +28,23 @@
       </ul>
     </div>
   </div>
-  <br>
-  <h1>这是HakimYu的首页</h1>
-  <!--抽屉菜单-->
+  
+  <!-- 正文 -->
+  <div class="mdui-m-l-3">
+  <h2 class="mdui-typo">Hello!</h2>
+  <p>这里是HakimYu的站点，</br>目前是用来整理一些有用的文件</p>
+  </div>
+  
+  <!-- 抽屉菜单 -->
   <div class="mdui-drawer" id="drawera">
     <button class="mdui-btn mdui-m-r-1 mdui-m-t-1 mdui-ripple mdui-float-right mdui-btn-icon" mdui-tooltip="{content: '关闭', position: 'left'}" mdui-drawer-close=""><i class="mdui-icon material-icons">close</i></button>
   </div>
+  
   <!-- MDUI JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/js/mdui.min.js" integrity="sha384-aB8rnkAu/GBsQ1q6dwTySnlrrbhqDwrDnpVHR2Wgm8pWLbwUnzDcIROX3VvCbaK+" crossorigin="anonymous"></script>
+  
+  <!-- 抽屉菜单 JavaScript-->
   <script>
-    //抽屉菜单js
     var inst = new mdui.Drawer('#drawera', { overlay: true, swipe: true });
     function drawerawa() { inst.open(); }
   </script>
