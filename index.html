@@ -35,7 +35,7 @@
 
   <div class="mdui-text-center mdui-m-t-3">
     小组:
-    <select class="mdui-select" mdui-select>
+    <select class="mdui-select" id="select1" mdui-select>
       <option value="5">五组</option>
       <option value="1" disabled>一组</option>
       <option value="2" disabled>二组</option>
@@ -44,11 +44,33 @@
       <option value="6" disabled>六组</option>
     </select>
   </div>
-  <button class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">开始</button>
-  <div class="mdui-container">
-    aaa
+  <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">开始</button>
+
+  <div class="mdui-container mdui-m-t-5">
+    <div class="mdui-row-xs-3">
+      <div class="mdui-m-t-3">
+        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat1"></div>
+        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat2"></div>
+        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat3"></div>
+      </div>
+
+      <div class="mdui-row-xs-3">
+        <div class="mdui-m-t-3">
+          <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat4"></div>
+          <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat5"></div>
+          <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat6"></div>
+        </div>
+      </div>
+      
+      <div class="mdui-row-xs-3">
+        <div class="mdui-m-t-3">
+          <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat7"></div>
+          <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat8"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+
 
   <!-- 抽屉菜单
   <div class="mdui-drawer" id="drawera">
@@ -60,6 +82,24 @@
 
   <!-- JavaScript -->
   <script>
+    $ = mdui.$
+    var allGroupsNames = new Array
+    allGroupsNames[5] = ['陶振扬', '欧阳奕哲', '夏天昊', '徐凯', '胡子颖', '戴佳乐', '汪瑞卿', '喻鸿杰']
+    function go() {
+      var selectedGroup = $('#select1').val();
+      switch (selectedGroup) {
+        case '5':
+          allGroupsNames[5].sort(function () {
+            return (0.5 - Math.random());
+          });
+          i = 1
+          while (i < 9) {
+            $('#seat' + i).text(allGroupsNames[5][i]);
+            i++
+          }
+          break;
+      }
+    }
     /*var inst = new mdui.Drawer('#drawera', { overlay: true, swipe: true });
     function drawerawa() { inst.open(); }*/
   </script>
