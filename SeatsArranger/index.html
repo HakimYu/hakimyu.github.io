@@ -17,8 +17,6 @@
       height: 100px;
       width: 100%;
       position: absolute;
-      bottom: 0;
-      left: 0;
     }
   </style>
 </head>
@@ -54,87 +52,87 @@
       <option value="4">四组</option>
       <option value="6" disabled>六组</option>
     </select>
-    </br>
-    第一排人数:
-    <select class="mdui-select" id="select2" mdui-select>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3" selected="true">3</option>
-    </select>
-  </div>
-  <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">安排</button>
+  </br>
+  第一排人数:
+  <select class="mdui-select" id="select2" mdui-select>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected="true">3</option>
+  </select>
+</div>
+<button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">安排</button>
 
-  <div class="mdui-container mdui-m-t-5" style="height: 200%;">
-    <div class="mdui-row-xs-3">
-      <div class="mdui-m-t-5">
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat1"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat2"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat3"></div>
-      </div>
-    </div>
-
-    <div class="mdui-row-xs-3">
-      <div class="mdui-m-t-5">
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat4"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat5"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat6"></div>
-      </div>
-    </div>
-
-    <div class="mdui-row-xs-3">
-      <div class="mdui-m-t-5">
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat7"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat8"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat9"></div>
-      </div>
-    </div>
-    
-    <div class="mdui-row-xs-3">
-      <div class="mdui-m-t-5">
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat10"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat11"></div>
-        <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat12"></div>
-      </div>
+<div class="mdui-container mdui-m-t-5" style="height: 200%;">
+  <div class="mdui-row-xs-3">
+    <div class="mdui-m-t-5">
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat1"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat2"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat3"></div>
     </div>
   </div>
 
-  <div class="footer mdui-typo">
-    <hr />
-    <p class="mdui-p-t-1 mdui-text-center mdui-typo-caption-opacity">
-      Copyright ©2021 HakimYu All Rights Reserved
-    </p>
+  <div class="mdui-row-xs-3">
+    <div class="mdui-m-t-5">
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat4"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat5"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat6"></div>
+    </div>
   </div>
 
+  <div class="mdui-row-xs-3">
+    <div class="mdui-m-t-5">
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat7"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat8"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat9"></div>
+    </div>
+  </div>
 
-  <!-- MDUI JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+  <div class="mdui-row-xs-3">
+    <div class="mdui-m-t-5">
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat10"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat11"></div>
+      <div class="mdui-col mdui-text-center mdui-typo-display-1" id="seat12"></div>
+    </div>
+  </div>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    $ = mdui.$;
-    var allGroupsNames = new Array;
-    allGroupsNames[1] = ['顾大局', '唐集政', '熊涛', '万芬', '凌丹', '熊英凡', '周志豪', '熊依诺', '李婧妍'];
-    allGroupsNames[4] = ["郭美成", "刘嘉宸", "张祖龙", "丁晨悦", "孙宗兴", "张梦婕", "张苏颜", "熊芊妍"]
-    allGroupsNames[5] = ['陶振扬', '欧阳奕哲', '夏天昊', '徐凯', '胡子颖', '戴佳乐', '汪瑞卿', '喻鸿杰'];
+<div class="footer mdui-typo">
+  <hr />
+  <p class="mdui-p-t-1 mdui-text-center mdui-typo-caption-opacity">
+    Copyright ©2021 HakimYu All Rights Reserved
+  </p>
+</div>
 
-    function go() {
-      var selectedGroup = $('#select1').val();
-      var firstRowNum = $('#select2').val();
-      allGroupsNames[Number(selectedGroup)].sort(function () {
-        return (0.5 - Math.random());
-      });
-      var i = 1;
-      while (i < 13) {
-        $('#seat' + i).text('');
-        i++;
-      }
-      var i = 1;
-      while (i < allGroupsNames[Number(selectedGroup)].length + 1) {
-        $('#seat' + (i + 3 - Number(firstRowNum))).text(allGroupsNames[selectedGroup][i-1]);
-        i++;
-      }
+
+<!-- MDUI JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+
+<!-- JavaScript -->
+<script>
+  $ = mdui.$;
+  var allGroupsNames = new Array;
+  allGroupsNames[1] = ['顾大局', '唐集政', '熊涛', '万芬', '凌丹', '熊英凡', '周志豪', '熊依诺', '李婧妍'];
+  allGroupsNames[4] = ["郭美成", "刘嘉宸", "张祖龙", "丁晨悦", "孙宗兴", "张梦婕", "张苏颜", "熊芊妍"]
+  allGroupsNames[5] = ['陶振扬', '欧阳奕哲', '夏天昊', '徐凯', '胡子颖', '戴佳乐', '汪瑞卿', '喻鸿杰'];
+
+  function go() {
+    var selectedGroup = $('#select1').val();
+    var firstRowNum = $('#select2').val();
+    allGroupsNames[Number(selectedGroup)].sort(function () {
+      return (0.5 - Math.random());
+    });
+    var i = 1;
+    while (i < 13) {
+      $('#seat' + i).text('');
+      i++;
     }
-  </script>
+    var i = 1;
+    while (i < allGroupsNames[Number(selectedGroup)].length + 1) {
+      $('#seat' + (i + 3 - Number(firstRowNum))).text(allGroupsNames[selectedGroup][i-1]);
+      i++;
+    }
+  }
+</script>
 </body>
 
 </html>
