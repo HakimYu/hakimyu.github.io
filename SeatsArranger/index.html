@@ -104,6 +104,11 @@
         return (0.5 - Math.random());
       });
       var i = 1;
+      while (i < 10) {
+        $('#seat' + i).text('');
+        i++;
+      }
+      var i = 1;
       while (i < allGroupsNames[Number(selectedGroup)].length + 1) {
         $('#seat' + i).text(allGroupsNames[selectedGroup][i-1]);
         i++;
