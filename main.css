@@ -1,1 +1,17 @@
-.fixed-bottom {position: fixed;bottom: 0;width:100%;}
+.fixed-bottom {
+  position: 
+  fixed;bottom: 0;
+  width:100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+}
