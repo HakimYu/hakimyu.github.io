@@ -13,11 +13,11 @@
   <title>抽签系统</title>
 </head>
 
-<body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1">
+<body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1" style="overflow:auto;">
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
-      <a onclick="" class="mdui-btn mdui-btn-icon"><i
+      <a hidden onclick="" class="mdui-btn mdui-btn-icon"><i
         class="mdui-icon material-icons">menu</i></a>
       <span class="mdui-typo-title">抽签系统</span>
       <div class="mdui-toolbar-spacer"></div>
@@ -28,16 +28,23 @@
       </ul>
     </div>
   </div>
-
+  <div class="mdui-container">
+  <div class="mdui-textfield mdui-textfield-floating-label">
+  <label class="mdui-textfield-label">生成个数</label>
+  <input class="mdui-textfield-input" id="input1" type="text"/>
+</div>
+  </div>
+  <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
+  <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
 <script src='main.js'></script>
-<script src="../main.js"></script>
-
+<!--script src="../main.js"></script-->
+ 
 <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
 <script>
     // 初始化
-    var vConsole = new VConsole();
+    //var vConsole = new VConsole();
 </script>
 
 </body>
