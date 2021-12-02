@@ -20,37 +20,47 @@
       <a onclick="drawer();" hidden="true" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
       <span class="mdui-typo-title">首页</span>
       <div class="mdui-toolbar-spacer"></div>
-      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i class="mdui-icon material-icons">more_vert</i></a>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target:'#rightmenu'}"><i class="mdui-icon material-icons">more_vert</i></a>
       <ul class="mdui-menu" id="rightmenu">
         <li class="mdui-menu-item"> <a onclick="location.reload()" class="mdui-ripple">刷新</a> </li>
       </ul>
     </div>
   </div>
-  <div class="mdui-m-a-1">
+  <div class="mdui-m-a-1 mdui-m-y-2">
     <div class="mdui-card">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title">座位自动安排系统</div>
-        <div class="mdui-card-primary-subtitle">SeatsArranger</div>
+        <div class="mdui-card-primary-subtitle">Seats Arrange System</div>
       </div>
-      <div class="mdui-card-content"></div>
+      <div hidden class="mdui-card-content"></div>
       <div class="mdui-card-actions">
-        <button onclick="openUrl('SeatsArranger');" class="mdui-btn mdui-float-right mdui-ripple">打开</button>
+        <button onclick="openUrl('SeatsArranger');" class="mdui-btn mdui-float-right mdui-text-color-pink mdui-ripple">打开</button>
       </div>
     </div>
   </div>
   
-  <footer>
-    <div class="mdui-typo">
-      <p class="mdui-p-t-1 mdui-text-center mdui-typo-caption-opacity">
-        Copyright ©2021 HakimYu All Rights Reserved
-      </p>
+  <div class="mdui-m-a-1 mdui-m-y-2">
+    <div class="mdui-card">
+      <div class="mdui-card-primary">
+        <div class="mdui-card-primary-title">抽签系统</div>
+        <div class="mdui-card-primary-subtitle">Drawing System</div>
+      </div>
+      <div hidden class="mdui-card-content"></div>
+      <div class="mdui-card-actions">
+        <button onclick="openUrl('Drawer');" class="mdui-btn mdui-float-right mdui-text-color-pink mdui-ripple">打开</button>
+      </div>
     </div>
-  </footer>
+  </div>
+  
   <!-- MDUI JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
-  <!-- JavaScript -->
-  <script src='main.js'>
-  </script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+
+<script>
+    // 初始化
+    var vConsole = new VConsole();
+</script>
+  <script src='main.js'></script>
 </body>
 
 </html>

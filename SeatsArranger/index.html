@@ -17,8 +17,8 @@
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
-      <a onclick="drawerawa();" hidden="true" class="mdui-btn mdui-btn-icon"><i
-        class="mdui-icon material-icons">menu</i></a>
+      <a onclick="openUrl("https://baidu.com")" class="mdui-btn mdui-btn-icon"><i
+        class="mdui-icon material-icons">arrow_back</i></a>
       <span class="mdui-typo-title">座位自动安排系统</span>
       <div class="mdui-toolbar-spacer"></div>
       <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i
@@ -28,21 +28,19 @@
       </ul>
     </div>
   </div>
-  <button class="mdui-hidden mdui-btn mdui-btn-icon mdui-ripple mdui-float-right" mdui-tooltip="{content: '翻译' , position: 'left'}">
-    <i class="mdui-icon material-icons mdui-text-color-grey">translate</i>
-  </button>
+
   <p class="mdui-text-center mdui-m-l-3 mdui-typo-display-1-opacity">
     伟大的计算机会指引我们走向公平。
   </p>
   <div class="mdui-text-center mdui-m-t-3">
     组:
     <select class="mdui-select" id="select1" mdui-select>
-      <option value="5">五组</option>
       <option value="1">一组</option>
-      <option value="2" disabled>二组</option>
-      <option value="3" disabled>三组</option>
+      <option value="2">二组</option>
+      <option value="3">三组</option>
       <option value="4">四组</option>
-      <option value="6" disabled>六组</option>
+      <option value="5" selected>五组</option>
+      <option value="6">六组</option>
     </select>
   </br>
   第一排人数:
@@ -88,16 +86,15 @@
   </div>
 </div>
 
-<footer class="footer">
-<div class="mdui-typo">
-  <p class="mdui-p-t-1 mdui-text-center mdui-typo-caption-opacity">
-    Copyright ©2021 HakimYu All Rights Reserved
-  </p>
-</div>
-</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
 <script src='main.js'></script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+<script>
+    // 初始化
+    var vConsole = new VConsole();
+</script>
 
 </body>
 </html>
