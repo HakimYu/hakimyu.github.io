@@ -8,7 +8,7 @@
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!-- MDUI CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css"/>
+  <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../main.css"/>
   <title>座位自动安排系统</title>
 </head>
@@ -17,7 +17,7 @@
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
-      <a onclick="openUrl("https://baidu.com")" class="mdui-btn mdui-btn-icon"><i
+      <a onclick="openUrl('../')" class="mdui-btn mdui-btn-icon"><i
         class="mdui-icon material-icons">arrow_back</i></a>
       <span class="mdui-typo-title">座位自动安排系统</span>
       <div class="mdui-toolbar-spacer"></div>
@@ -32,6 +32,8 @@
   <p class="mdui-text-center mdui-m-l-3 mdui-typo-display-1-opacity">
     伟大的计算机会指引我们走向公平。
   </p>
+
+  <!--组、人数选择-->
   <div class="mdui-text-center mdui-m-t-3">
     组:
     <select class="mdui-select" id="select1" mdui-select>
@@ -51,7 +53,19 @@
   </select>
 </div>
 <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">安排</button>
+<div class="mdui-dialog" id="checkdialog">
+  <div class="mdui-dialog-title">确定再选？?</div>
+  <div class="mdui-dialog-content">乱点你可有违公平</div>
+  <div class="mdui-progress mdui-float-right mdui-m-r-2" style="width: 50%;">
+  <div class="mdui-progress-determinate" style="width: 30%;"></div>
+  </div>
+  <div class="mdui-dialog-actions">
+    <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
+    <button id="confirmBotton" class="mdui-btn mdui-ripple">确认</button>
+  </div>
+</div>
 
+<!--座位容器-->
 <div class="mdui-container mdui-m-t-5" style="height: 200%;">
   <div class="mdui-row-xs-3">
     <div class="mdui-m-t-5">
@@ -86,9 +100,10 @@
   </div>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
-<script src='main.js'></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
+<script src='seatsarranger.js'></script>
+<script src="../main.js"></script>
 
 <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
 <script>

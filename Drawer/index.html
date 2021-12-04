@@ -8,40 +8,52 @@
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!-- MDUI CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+  <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../main.css" />
   <title>抽签系统</title>
 </head>
 
 <body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1" style="overflow:auto;">
+
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
-      <a hidden onclick="" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+      <a onclick="openUrl('../')" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">arrow_back</i></a>
       <span class="mdui-typo-title">抽签系统</span>
       <div class="mdui-toolbar-spacer"></div>
-      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i class="mdui-icon material-icons">more_vert</i></a>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i
+          class="mdui-icon material-icons">more_vert</i></a>
       <ul class="mdui-menu" id="rightmenu">
         <li class="mdui-menu-item"> <a onclick="location.reload()" class="mdui-ripple">刷新</a> </li>
       </ul>
     </div>
   </div>
+
   <!--Main-->
   <div class="mdui-container">
-    <div class="mdui-textfield mdui-textfield-floating-label">
-      <label class="mdui-textfield-label">生成个数</label>
-      <input class="mdui-textfield-input" id="input1" type="text" pattern="^([1-4]?\d|50)$" required/>
-      <div class="mdui-textfield-error">只能输50以内数字，你想啥呢？</div>
+    <div class="mdui-row-md-3">
+      <div class="mdui-col"></div>
+      <div class="mdui-col">
+        <div class="mdui-textfield mdui-textfield-floating-label">
+          <label class="mdui-textfield-label">生成个数</label>
+          <input class="mdui-textfield-input" id="input1" type="text" pattern="^([1-4]?\d|50)$" required />
+          <div class="mdui-textfield-error">只能输50以内数字，你想啥呢？</div>
+        </div>
+      </div>
+      <div class="mdui-col"></div>
     </div>
     <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
-    <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1"></div>
+    <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1">
+    </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
-  <script src='main.js'></script>
-  <!--script src="../main.js"></script-->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
+  <script src='drawer.js'></script>
+  <script src="../main.js"></script>
   <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
   <script>
-    // 初始化
+    //初始化
     //var vConsole = new VConsole();
   </script>
 </body>
