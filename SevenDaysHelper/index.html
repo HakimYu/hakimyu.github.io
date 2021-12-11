@@ -29,7 +29,23 @@
   <!--Main-->
   <div class="mdui-container">
   </div>
-  <!--script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script-->
+  <div class="mdui-dialog" id="loginDialog">
+    <div class="mdui-dialog-title">登录</div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">账号</label>
+        <input id="userCode" class="mdui-textfield-input"/>
+      </div>
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">密码</label>
+        <input id="password" class="mdui-textfield-input" type="password"/>
+      </div>
+    </div>
+    <div class="mdui-dialog-actions">
+      <!--button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button-->
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>登录</button>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
   <script src='SevenDaysHelper.js'></script>

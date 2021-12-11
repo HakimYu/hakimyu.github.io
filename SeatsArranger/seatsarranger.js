@@ -1,3 +1,4 @@
+var $ = mdui.$;
 var allGroupsNames = new Array;
 var progress = 0;
 var canStart = true;
@@ -9,7 +10,7 @@ allGroupsNames[4] = ["郭美成", "刘嘉宸", "张祖龙", "丁晨悦", "孙宗
 allGroupsNames[5] = ['陶振扬', '欧阳奕哲', '夏天昊', '徐凯', '胡子颖', '戴佳乐', '汪瑞卿', '喻鸿杰'];
 allGroupsNames[6] = ['周文涛', '万泽宇', '万礼庆', '梁烨', '聂义彪', '李语涵', '陈欣宇', '丁敬谦'];
 $(function() {
-  $('#go').click(function() {
+  $('#go').on('click',function() {
     if (canStart) {
       var selectedGroup = $('#select1').val();
       var firstRowNum = $('#select2').val();
@@ -33,7 +34,7 @@ $(function() {
     }
   });
 
-  $("#confirmBotton").click(function() {
+  $("#confirmBotton").on('click',function() {
     $('#progressBar').removeClass('mdui-hidden');
     progress += (100 / 5);
     if (progress < 100) {
