@@ -2,12 +2,13 @@ var $ = mdui.$;
 var loginDialog = new mdui.Dialog('#loginDialog');
 localStorage.setItem("szoneVersion", "3.1.0");
 $(function () {
-  if(localStorage.getItem('token') == null){
+  if (localStorage.getItem('token') == null) {
     loginDialog.open();
-    $('#loginDialog').on('confirm.mdui.dialog',() => {
-      login($('#userCode').val(),$('#password').val());
+    $('#loginDialog').on('confirm.mdui.dialog', () => {
+      login($('#userCode').val(), $('#password').val());
     });
   }
+  getExams();
 });
 
 function getUserInfo(callback) {
@@ -24,9 +25,9 @@ function getUserInfo(callback) {
 }
 function getUserCache() {
   if (localStorage.getItem("userInfo") !== null) {
-      return JSON.parse(Base64.decode(localStorage.getItem("userInfo")));
+    return JSON.parse(Base64.decode(localStorage.getItem("userInfo")));
   } else {
-      return false;
+    return false;
   }
 }
 function login(userCode, password) {
@@ -50,25 +51,84 @@ function login(userCode, password) {
             mdui.snackbar({
               message: "登录成功",
               timeout: 500,
-              //onClose: () => {}
             });
-
+            getExams();
           }
         });
       }
     }
   });
 }
+function getExams() {
+  var user_cache = getUserCache().data;
+  $.ajax({
+    method: "get",
+    url: getUrl("score", "/exam/getClaimExams"),
+    data: {
+      studentName: user_cache.studentName,
+      schoolGuid: user_cache.schoolGuid,
+      startIndex: 0,
+      grade: user_cache.grade === "" ? user_cache.currentGrade : user_cache.grade
+    },
+    headers: {
+      Version: localStorage.getItem("szoneVersion"),
+      Token: localStorage.getItem("token")
+    },
+    dataType: "json",
+    success: (data) => {
+      if (data.status != 200) {
+        mdui.snackbar({
+          message: data.message,
+          buttonText: "确定",
+        });
+      }
+      for (examData of data.data.list) {
+        examName = examData.examName;
+        examTime = examData.time.replace(/(\d{4})-(\d{2})-(\d{2})/, "考试时间：$1年$2月$3日");
+        examScore = examData.score;
+        getSubjects(examData);
+      }
+    }
+  });
+}
+
+function getSubjects(examData) {
+    $.ajax({
+      method: "post",
+      url: getUrl("score", "/Question/Subjects"),
+      headers: {
+        Token: localStorage.Token,
+        Version: localStorage.szoneVersion,
+      },
+      data: {
+        examGuid: examData.examGuid,
+        studentCode: examData.studentCode,
+        schoolGuid: user_cache.schoolGuid,
+        grade: user_cache.grade === "" ? user_cache.currentGrade : user_cache.grade,
+        ruCode: examData.ruCode
+      },
+      dataType: "json",
+      success: (data) => {
+        if (data.status != 200) {
+          mdui.snackbar({
+            message: data.message,
+          });
+          return;
+        }
+        return data;
+      }
+    });
+  }
 
 function getUrl(host, path) {
-  switch (host) {
-    case "my":
-      return "https://szone-my.7net.cc" + path;
-    /*case "old":
-        return "https://szone-api.7net.cc" + path;*/
-    case "score":
-      return "https://szone-score.7net.cc" + path;
-    default:
-      break;
-  }
-}
+      switch (host) {
+        case "my":
+          return "https://szone-my.7net.cc" + path;
+        /*case "old":
+            return "https://szone-api.7net.cc" + path;*/
+        case "score":
+          return "https://szone-score.7net.cc" + path;
+        default:
+          break;
+      }
+    }
