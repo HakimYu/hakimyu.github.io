@@ -57,11 +57,11 @@
 <!--对话框-->
 <div class="mdui-dialog" id="checkDialog">
   <div class="mdui-dialog-title">请确认</div>
-  <div class="mdui-dialog-content">乱点你抽个头抽
-  <div class="mdui-textfield mdui-textfield-floating-label">
-  <label id="questionLabel" class="mdui-textfield-label"></label>
-  <input id="resultInput" class="mdui-textfield-input" pattern="^[0-9]*$"/>
-  <div class="mdui-textfield-error">x∈R</div>
+  <div class="mdui-dialog-content">
+    <div id="question"></div>
+  <div id="resultField" class="mdui-textfield">
+  <input id="resultInput" class="mdui-textfield-input" pattern="^[0-9]*$" placeholder="答案"/>
+  <div id="resultInputErrorText" class="mdui-textfield-error">x∈R</div>
 </div>
   </div>
   <div class="mdui-dialog-actions">
@@ -112,7 +112,7 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
 <script>
     // 初始化
-    var vConsole = new VConsole();
+    //var vConsole = new VConsole();
 </script>
 
 </body>
