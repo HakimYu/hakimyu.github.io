@@ -34,11 +34,12 @@ $(function() {
     }
   });
 
-  $('#checkDialog').on('open.mdui.dialog', () => {
+  $('#checkDialog').on('opened.mdui.dialog', () => {
     var num1 = Math.floor(Math.random() * 10);
     var num2 = Math.floor(Math.random() * 10);
     result = num1 + num2;
-    $('questionLabel').text(num1 + ' + ' + num2);
+    $('questionLabel').html(num1 + ' + ' + num2);
+    console.log($('questionLabel').html());
   });
 
   $("#confirmBotton").on('click', function() {
