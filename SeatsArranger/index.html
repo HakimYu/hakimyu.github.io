@@ -13,7 +13,7 @@
   <title>座位自动安排系统</title>
 </head>
 
-<body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1">
+<body class="mdui-appbar-with-toolbar mdui-m-x-1 mdui-m-b-3" style="overflow:auto;">
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
@@ -55,11 +55,14 @@
 <button id="go" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">安排</button>
 
 <!--对话框-->
-<div class="mdui-dialog" id="checkdialog">
-  <div class="mdui-dialog-title">确定再选？</div>
-  <div class="mdui-dialog-content">乱点你可有违公平</div>
-  <div id="progressBar" class="mdui-hidden mdui-progress mdui-float-right mdui-m-r-2" style="width: 50%;">
-  <div id="progress" class="mdui-progress-determinate" style="width: 0%;"></div>
+<div class="mdui-dialog" id="checkDialog">
+  <div class="mdui-dialog-title">请确认</div>
+  <div class="mdui-dialog-content">乱点你抽个头抽
+  <div class="mdui-textfield mdui-textfield-floating-label">
+  <label id="questionLabel" class="mdui-textfield-label"></label>
+  <input id="resultInput" class="mdui-textfield-input" pattern="^[0-9]*$"/>
+  <div class="mdui-textfield-error">x∈R</div>
+</div>
   </div>
   <div class="mdui-dialog-actions">
     <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
@@ -109,7 +112,7 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
 <script>
     // 初始化
-    //var vConsole = new VConsole();
+    var vConsole = new VConsole();
 </script>
 
 </body>

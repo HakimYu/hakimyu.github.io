@@ -1,6 +1,6 @@
 var $ = mdui.$;
 var allGroupsNames = new Array;
-var progress = 0;
+var result = null;
 var canStart = true;
 var inst;
 allGroupsNames[1] = ['顾大局', '唐集政', '熊涛', '万芬', '凌丹', '熊英凡', '周志豪', '熊依诺', '李婧妍'];
@@ -10,7 +10,7 @@ allGroupsNames[4] = ["郭美成", "刘嘉宸", "张祖龙", "丁晨悦", "孙宗
 allGroupsNames[5] = ['陶振扬', '欧阳奕哲', '夏天昊', '徐凯', '胡子颖', '戴佳乐', '汪瑞卿', '喻鸿杰'];
 allGroupsNames[6] = ['周文涛', '万泽宇', '万礼庆', '梁烨', '聂义彪', '李语涵', '陈欣宇', '丁敬谦'];
 $(function() {
-  $('#go').on('click',function() {
+  $('#go').on('click', function() {
     if (canStart) {
       var selectedGroup = $('#select1').val();
       var firstRowNum = $('#select2').val();
@@ -29,22 +29,20 @@ $(function() {
       }
       canStart = false;
     } else {
-      inst = new mdui.Dialog('#checkdialog');
+      inst = new mdui.Dialog('#checkDialog');
       inst.open();
     }
   });
 
-  $("#confirmBotton").on('click',function() {
-    $('#progressBar').removeClass('mdui-hidden');
-    progress += (100 / 5);
-    if (progress < 100) {
-      $('#progress').css('width', progress + '%');
-    } else {
-      canStart = true;
-      progress = 0;
-      inst.close();
-      $('#progressBar').addClass('mdui-hidden');
-      $('#progress').css('width', '0%');
-    }
+  $('#checkDialog').on('open.mdui.dialog', () => {
+    var num1 = Math.floor(Math.random() * 10);
+    var num2 = Math.floor(Math.random() * 10);
+    result = num1 + num2;
+    $('questionLabel').text(num1 + ' + ' + num2);
+  });
+
+  $("#confirmBotton").on('click', function() {
+    canStart = true;
+    inst.close();
   });
 });
