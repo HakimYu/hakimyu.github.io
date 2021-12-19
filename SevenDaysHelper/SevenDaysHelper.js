@@ -91,7 +91,9 @@ function getSubjects() {
           message: data.message,
           buttonText: "确定",
         });
+        localStorage.removeItem('token');
         return false;
+        
       }
       lastExam = data.data.list[0];
       $.ajax({
