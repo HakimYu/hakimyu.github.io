@@ -12,7 +12,7 @@ $(function() {
     $('#table').removeClass('mdui-hidden')
   });
 });
- 
+  
 function getUserInfo(callback) {
   $.ajax({
     method: "get",
