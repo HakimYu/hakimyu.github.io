@@ -26,7 +26,80 @@
       </ul>
     </div>
   </div>
+  <!--Main--><!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- MDUI CSS -->
+  <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../main.css" />
+  <title>七天网络</title>
+</head>
+
+<body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1" style="overflow:auto;">
+  <!--标题栏-->
+  <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
+    <div class="mdui-toolbar mdui-color-indigo">
+      <a onclick="openUrl('../')" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">arrow_back</i></a>
+      <span class="mdui-typo-title">七天网络</span>
+      <div class="mdui-toolbar-spacer"></div>
+      <a href="javascript:;" class="mdui-hidden mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i class="mdui-icon material-icons">account_circle</i></a>
+      <ul class="mdui-menu" id="rightmenu">
+        <li class="mdui-menu-item"> <a id="helloUser" class="mdui-ripple">未登录</a></li>
+      </ul>
+    </div>
+  </div>
   <!--Main-->
+  <div class="mdui-container">
+    <button id="get" class="mdui-center mdui-m-t-5 mdui-btn mdui-ripple mdui-btn-raised">查询</button>
+    <div id="name" class="mdui-text-center mdui-m-y-2 mdui-typo-title"></div>
+    <div id="table" class="mdui-hidden mdui-table-fluid mdui-m-t-3">
+      <table class="mdui-table">
+        <thead>
+          <tr>
+            <th>科目</th>
+            <th>分数/总分</th>
+            <th>班排</th>
+            <th>校排</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="mdui-dialog" id="loginDialog">
+    <div class="mdui-dialog-title">登录</div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">手机号</label>
+        <input id="userCode" class="mdui-textfield-input" />
+      </div>
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">密码</label>
+        <input id="password" class="mdui-textfield-input" type="password" />
+      </div>
+    </div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>登录</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
+  <script src='SevenDaysHelper.js'></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
+  <script>
+    //初始化
+    //var vConsole = new VConsole();
+  </script>
+</body>
+
+</html>
   <div class="mdui-container">
     <button id="get" class="mdui-center mdui-m-t-5 mdui-btn mdui-ripple mdui-btn-raised">查询</button>
 <div id="table" class="mdui-hidden mdui-table-fluid mdui-m-t-3">
@@ -36,7 +109,80 @@
         <th>科目</th>
         <th>分数/总分</th>
         <th>班排</th>
-        <th>校排</th>
+        <th>校排</th><!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- MDUI CSS -->
+  <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../main.css" />
+  <title>七天网络</title>
+</head>
+
+<body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1" style="overflow:auto;">
+  <!--标题栏-->
+  <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
+    <div class="mdui-toolbar mdui-color-indigo">
+      <a onclick="openUrl('../')" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">arrow_back</i></a>
+      <span class="mdui-typo-title">七天网络</span>
+      <div class="mdui-toolbar-spacer"></div>
+      <a href="javascript:;" class="mdui-hidden mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i class="mdui-icon material-icons">account_circle</i></a>
+      <ul class="mdui-menu" id="rightmenu">
+        <li class="mdui-menu-item"> <a id="helloUser" class="mdui-ripple">未登录</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--Main-->
+  <div class="mdui-container">
+    <button id="get" class="mdui-center mdui-m-t-5 mdui-btn mdui-ripple mdui-btn-raised">查询</button>
+    <div id="name" class="mdui-text-center mdui-m-y-2 mdui-typo-title"></div>
+    <div id="table" class="mdui-hidden mdui-table-fluid mdui-m-t-3">
+      <table class="mdui-table">
+        <thead>
+          <tr>
+            <th>科目</th>
+            <th>分数/总分</th>
+            <th>班排</th>
+            <th>校排</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="mdui-dialog" id="loginDialog">
+    <div class="mdui-dialog-title">登录</div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">手机号</label>
+        <input id="userCode" class="mdui-textfield-input" />
+      </div>
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">密码</label>
+        <input id="password" class="mdui-textfield-input" type="password" />
+      </div>
+    </div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>登录</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
+  <script src='SevenDaysHelper.js'></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
+  <script>
+    //初始化
+    //var vConsole = new VConsole();
+  </script>
+</body>
+
+</html>
       </tr>
     </thead>
     <tbody id="tableBody">
