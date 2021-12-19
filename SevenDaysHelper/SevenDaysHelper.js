@@ -1,20 +1,20 @@
 var $ = mdui.$;
 var loginDialog = new mdui.Dialog('#loginDialog');
 localStorage.setItem("szoneVersion", "3.1.0");
-$(function () {
+$(function() {
   if (localStorage.getItem('token') == null) {
     loginDialog.open();
     $('#loginDialog').on('confirm.mdui.dialog', () => {
       login($('#userCode').val(), $('#password').val());
     });
+  } else {
+    getSubjects();
   }
 
+  $('#get').on('click', () => {
+    $('#table').removeClass('mdui-hidden')
+  });
 });
-
-$('#get').on('click', () => {
-  var data = getSubjects($('#studentCode').val());
-  console.log(data);
-})
 
 function getUserInfo(callback) {
   $.ajax({
@@ -28,6 +28,7 @@ function getUserInfo(callback) {
     success: (data, status) => callback(data, status)
   });
 }
+
 function getUserCache() {
   if (localStorage.getItem("userInfo") !== null) {
     return JSON.parse(Base64.decode(localStorage.getItem("userInfo")));
@@ -35,6 +36,7 @@ function getUserCache() {
     return false;
   }
 }
+
 function login(userCode, password) {
   $.ajax({
     method: "post",
@@ -50,7 +52,6 @@ function login(userCode, password) {
     success: (data) => {
       if (data.status == 200) {
         localStorage.setItem('token', data.data.token);
-        console.log(localStorage.getItem('token'));
         getUserInfo((data) => {
           if (data.status == 200) {
             localStorage.setItem("userInfo", Base64.encode(JSON.stringify(data)));
@@ -58,20 +59,26 @@ function login(userCode, password) {
               message: "登录成功",
               timeout: 500,
             });
+            getSubjects();
           }
         });
       }
     }
   });
 }
-function getSubjects(studentCode) {
-  var user_cache = getUserCache();
+
+function getSubjects() {
+  var user_cache = getUserCache().data;
+  var lastExam;
   $.ajax({
     method: "get",
-    url: getUrl("score", "/exam/getUnClaimExams"),
+    url: getUrl("score", "/exam/getClaimExams"),
     data: {
       studentName: user_cache.studentName,
-      schoolGuid: user_cache.schoolGuid
+      schoolGuid: user_cache.schoolGuid,
+      startIndex: 0,
+      grade: user_cache.grade === "" ? user_cache.currentGrade : user_cache.grade,
+      rows: 6
     },
     headers: {
       Version: localStorage.getItem("szoneVersion"),
@@ -86,43 +93,60 @@ function getSubjects(studentCode) {
         });
         return false;
       }
-      console.log(data.data.list[0]);
-      console.log(data);
-    }
-  });
-  $.ajax({
-    method: "post",
-    url: getUrl("score", "/Question/Subjects"),
-    headers: {
-      Token: localStorage.getItem('token'),
-      Version: localStorage.getItem('szoneVersion')
-    },
-    data: {
-      examGuid: '20211217-0030-3577-2f9e-5b8d5f133103',
-      studentCode: studentCode,
-      schoolGuid: 'd5a1557c-ba46-4c4f-949f-c6fb0a153626',
-      grade: 'g1',
-      ruCode: '3601002'
-    },
-    dataType: "json",
-    success: (data) => {
-      if (data.status != 200) {
-        mdui.snackbar({
-          message: data.message,
-        });
-        localStorage.removeItem('token');
-        return;
-      }
-      return data;
+      lastExam = data.data.list[0];
+      $.ajax({
+        method: "post",
+        url: getUrl("score", "/Question/Subjects"),
+        headers: {
+          Token: localStorage.getItem('token'),
+          Version: localStorage.getItem('szoneVersion')
+        },
+        data: {
+          examGuid: lastExam.examGuid,
+          studentCode: lastExam.studentCode,
+          schoolGuid: lastExam.schoolGuid,
+          grade: 'g1',
+          ruCode: lastExam.ruCode
+        },
+        dataType: "json",
+        success: (data) => {
+          if (data.status != 200) {
+            mdui.snackbar({
+              message: data.message,
+            });
+            localStorage.removeItem('token');
+            return;
+          }
+          let i = 0;
+          for (subject of data.data.subjects) {
+            var fullScore = subject.fullScore;
+            var myScore = subject.myScore;
+            var subjectName = subject.km;
+            var classRanking = subject.cs;
+            var schoolRanking = subject.ss;
+            var subjectTable = "";
+            subjectTable += "<tr>";
+            subjectTable += "    <td>" + subjectName + "</td>";
+            subjectTable += "    <td>" + myScore + '/' + fullScore + "</td>";
+            subjectTable += "    <td>" + classRanking + "</td>";
+            subjectTable += "    <td>" + schoolRanking + "</td>";
+            subjectTable += "</tr>";
+            $('#tableBody').append(subjectTable);
+            mdui.mutation();
+            i++;
+          }
+        }
+      });
     }
   });
 }
+
 function getUrl(host, path) {
   switch (host) {
     case "my":
       return "https://szone-my.7net.cc" + path;
-    /*case "old":
-        return "https://szone-api.7net.cc" + path;*/
+      /*case "old":
+          return "https://szone-api.7net.cc" + path;*/
     case "score":
       return "https://szone-score.7net.cc" + path;
     default:
