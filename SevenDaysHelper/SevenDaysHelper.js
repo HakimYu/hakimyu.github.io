@@ -60,7 +60,18 @@ function login(userCode, password) {
               timeout: 500,
             });
             getSubjects();
+          } else {
+            mdui.snackbar({
+              message: data.message,
+              timeout: 500,
+            });
           }
+        });
+      }
+      else {
+        mdui.snackbar({
+          message: data.message,
+          timeout: 500,
         });
       }
     }
@@ -91,9 +102,9 @@ function getSubjects() {
           message: data.message,
           buttonText: "确定",
         });
-        localStorage.removeItem('token');
+        localStorage.removeItem('token')
         return false;
-        
+
       }
       lastExam = data.data.list[0];
       $.ajax({
