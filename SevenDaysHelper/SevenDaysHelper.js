@@ -8,8 +8,13 @@ $(function () {
       login($('#userCode').val(), $('#password').val());
     });
   }
-  getExams();
+
 });
+
+$('#get').on('click', () => {
+  var data = getSubjects($('#studentCode').val());
+  console.log(data);
+})
 
 function getUserInfo(callback) {
   $.ajax({
@@ -45,6 +50,7 @@ function login(userCode, password) {
     success: (data) => {
       if (data.status == 200) {
         localStorage.setItem('token', data.data.token);
+        console.log(localStorage.getItem('token'));
         getUserInfo((data) => {
           if (data.status == 200) {
             localStorage.setItem("userInfo", Base64.encode(JSON.stringify(data)));
@@ -52,23 +58,20 @@ function login(userCode, password) {
               message: "登录成功",
               timeout: 500,
             });
-            getExams();
           }
         });
       }
     }
   });
 }
-function getExams() {
-  var user_cache = getUserCache().data;
+function getSubjects(studentCode) {
+  var user_cache = getUserCache();
   $.ajax({
     method: "get",
-    url: getUrl("score", "/exam/getClaimExams"),
+    url: getUrl("score", "/exam/getUnClaimExams"),
     data: {
       studentName: user_cache.studentName,
-      schoolGuid: user_cache.schoolGuid,
-      startIndex: 0,
-      grade: user_cache.grade === "" ? user_cache.currentGrade : user_cache.grade
+      schoolGuid: user_cache.schoolGuid
     },
     headers: {
       Version: localStorage.getItem("szoneVersion"),
@@ -81,54 +84,48 @@ function getExams() {
           message: data.message,
           buttonText: "确定",
         });
+        return false;
       }
-      for (examData of data.data.list) {
-        examName = examData.examName;
-        examTime = examData.time.replace(/(\d{4})-(\d{2})-(\d{2})/, "考试时间：$1年$2月$3日");
-        examScore = examData.score;
-        getSubjects(examData);
+      console.log(data.data.list[0]);
+      console.log(data);
+    }
+  });
+  $.ajax({
+    method: "post",
+    url: getUrl("score", "/Question/Subjects"),
+    headers: {
+      Token: localStorage.getItem('token'),
+      Version: localStorage.getItem('szoneVersion')
+    },
+    data: {
+      examGuid: '20211217-0030-3577-2f9e-5b8d5f133103',
+      studentCode: studentCode,
+      schoolGuid: 'd5a1557c-ba46-4c4f-949f-c6fb0a153626',
+      grade: 'g1',
+      ruCode: '3601002'
+    },
+    dataType: "json",
+    success: (data) => {
+      if (data.status != 200) {
+        mdui.snackbar({
+          message: data.message,
+        });
+        localStorage.removeItem('token');
+        return;
       }
+      return data;
     }
   });
 }
-
-function getSubjects(examData) {
-    $.ajax({
-      method: "post",
-      url: getUrl("score", "/Question/Subjects"),
-      headers: {
-        Token: localStorage.Token,
-        Version: localStorage.szoneVersion,
-      },
-      data: {
-        examGuid: examData.examGuid,
-        studentCode: examData.studentCode,
-        schoolGuid: user_cache.schoolGuid,
-        grade: user_cache.grade === "" ? user_cache.currentGrade : user_cache.grade,
-        ruCode: examData.ruCode
-      },
-      dataType: "json",
-      success: (data) => {
-        if (data.status != 200) {
-          mdui.snackbar({
-            message: data.message,
-          });
-          return;
-        }
-        return data;
-      }
-    });
-  }
-
 function getUrl(host, path) {
-      switch (host) {
-        case "my":
-          return "https://szone-my.7net.cc" + path;
-        /*case "old":
-            return "https://szone-api.7net.cc" + path;*/
-        case "score":
-          return "https://szone-score.7net.cc" + path;
-        default:
-          break;
-      }
-    }
+  switch (host) {
+    case "my":
+      return "https://szone-my.7net.cc" + path;
+    /*case "old":
+        return "https://szone-api.7net.cc" + path;*/
+    case "score":
+      return "https://szone-score.7net.cc" + path;
+    default:
+      break;
+  }
+}
