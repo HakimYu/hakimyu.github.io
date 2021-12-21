@@ -31,19 +31,35 @@
 
   <!--Main-->
   <div class="mdui-container">
-    <div class="mdui-row-md-3">
-      <div class="mdui-col"></div>
-      <div class="mdui-col">
-        <div class="mdui-textfield mdui-textfield-floating-label">
-          <label class="mdui-textfield-label">生成个数</label>
-          <input class="mdui-textfield-input" id="input1" type="text" pattern="^([1-4]?\d|50)$" required />
-          <div class="mdui-textfield-error">x∈[0,50]</div>
-        </div>
-      </div>
-      <div class="mdui-col"></div>
+    <div class="mdui-text-center mdui-m-t-2">
+      <form>
+        <label class="mdui-radio mdui-m-x-2">
+          <input id="drawNames" type="radio" name="group1" checked/>
+          <i class="mdui-radio-icon"></i>
+          抽名字
+        </label>
+        <label class="mdui-radio mdui-m-x-2">
+          <input id="drawNum" type="radio" name="group1" />
+          <i class="mdui-radio-icon"></i>
+          抽数字
+        </label>
+      </form>
     </div>
-    <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
-    <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1">
+    <div id="nameDrawer" class="mdui-m-t-1">
+      <div class="mdui-row-md-3">
+        <div class="mdui-col"></div>
+        <div class="mdui-col">
+          <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">生成个数</label>
+            <input class="mdui-textfield-input" id="input1" type="text" pattern="^([1-4]?\d|50)$" required />
+            <div class="mdui-textfield-error">x∈[0,50]</div>
+          </div>
+        </div>
+        <div class="mdui-col"></div>
+      </div>
+      <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
+      <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1">
+      </div>
     </div>
   </div>
 
