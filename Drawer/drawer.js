@@ -7,6 +7,9 @@ $(function () {
       go();
     }
   });
+  $('#drawNums').on('change',() => {
+
+  });
 });
 
 function go() {
@@ -25,6 +28,8 @@ function go() {
         i++;
       }
     }
+  } else if($('#drawNums').prop('checked')) {
+
   }
 }
 
