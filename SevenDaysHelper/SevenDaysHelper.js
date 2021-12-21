@@ -16,6 +16,14 @@ $(function() {
   });
 });
 
+function openLoginDialog() {
+  localStorage.removeItem('token');
+  $('#userCode').val('');
+  $('#password').val('');
+  loginDialog = new mdui.Dialog('#loginDialog');
+  loginDialog.open();
+}
+
 function getUserInfo(callback) {
   $.ajax({
     method: "get",
@@ -63,7 +71,6 @@ function login(userCode, password) {
           } else {
             mdui.snackbar({
               message: data.message,
-              timeout: 500,
             });
           }
         });
@@ -71,8 +78,8 @@ function login(userCode, password) {
       else {
         mdui.snackbar({
           message: data.message,
-          timeout: 500,
         });
+        openLoginDialog();
       }
     }
   });
@@ -102,7 +109,7 @@ function getSubjects() {
           message: data.message,
           buttonText: "确定",
         });
-        localStorage.removeItem('token')
+        openLoginDialog();
         return false;
 
       }
@@ -127,7 +134,7 @@ function getSubjects() {
             mdui.snackbar({
               message: data.message,
             });
-            localStorage.removeItem('token');
+            openLoginDialog();
             return;
           }
           let i = 0;
