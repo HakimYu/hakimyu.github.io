@@ -14,32 +14,29 @@
 </head>
 
 <body class="mdui-appbar-with-toolbar mdui-m-l-1 mdui-m-r-1" style="overflow:auto;">
-
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-indigo">
       <a onclick="openUrl('../')" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">arrow_back</i></a>
       <span class="mdui-typo-title">抽签系统</span>
       <div class="mdui-toolbar-spacer"></div>
-      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i
-          class="mdui-icon material-icons">more_vert</i></a>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#rightmenu'}"><i class="mdui-icon material-icons">more_vert</i></a>
       <ul class="mdui-menu" id="rightmenu">
         <li class="mdui-menu-item"> <a onclick="location.reload()" class="mdui-ripple">刷新</a> </li>
       </ul>
     </div>
   </div>
-
   <!--Main-->
   <div class="mdui-container">
     <div class="mdui-text-center mdui-m-t-2">
       <form id="radio">
         <label class="mdui-radio mdui-m-x-2">
-          <input id="drawNames" type="radio" name="group1" checked />
+          <input id="drawNames" type="radio" name="group1" />
           <i class="mdui-radio-icon"></i>
           抽名字
         </label>
         <label class="mdui-radio mdui-m-x-2">
-          <input id="drawNums" type="radio" name="group1" />
+          <input id="drawNums" type="radio" name="group1" checked />
           <i class="mdui-radio-icon"></i>
           抽数字
         </label>
@@ -67,26 +64,36 @@
         <div class="mdui-col">
           <div class="mdui-textfield mdui-textfield-floating-label">
             <label class="mdui-textfield-label">生成个数</label>
-            <input class="mdui-textfield-input" id="drawNumsQuantity" type="text" pattern="^[0-9]*$" required />
-            <div class="mdui-textfield-error">x∈R</div>
+            <input class="mdui-textfield-input" id="drawNumsQuantity" type="text" pattern="^([1-9\d*]*|0)$" required />
+            <div class="mdui-textfield-error">x∈N</div>
+          </div>
+          <div>
+          <div class="mdui-float-left mdui-textfield mdui-textfield-floating-label mdui-m-x-2" style="display: inline-block; width: 40%;">
+            <label class="mdui-textfield-label">最小值</label>
+            <input class="mdui-textfield-input" id="drawNumsMin" type="text" pattern="^(0|[1-9][0-9]*|-[1-9][0-9]*)$" required />
+            <div class="mdui-textfield-error">x∈Z</div>
+          </div>
+            <div class="mdui-float-right mdui-textfield mdui-textfield-floating-label mdui-m-x-2" style="display: inline-block; width: 40%;">
+            <label class="mdui-textfield-label">最大值</label>
+            <input class="mdui-textfield-input" id="drawNumsMax" type="text" pattern="^(0|[1-9][0-9]*|-[1-9][0-9]*)$" required />
+            <div class="mdui-textfield-error">x∈Z</div>
           </div>
         </div>
-        <div class="mdui-col"></div>
+          <div class="mdui-col"></div>
+        </div>
+        <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
       </div>
-      <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
+      <div id="result" class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;">
+      </div>
     </div>
-    <div id="result" class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;">
-    </div>
-  </div>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
-  <script src='drawer.js'></script>
-  <script src="../main.js"></script>
-  <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
-  <script>
-    //初始化
-    //var vConsole = new VConsole();
-  </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
+    <script src='drawer.js'></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
+    <script>
+      //初始化
+      var vConsole = new VConsole();
+    </script>
 </body>
 
 </html>

@@ -7,6 +7,14 @@ $(function() {
       go();
     }
   });
+
+  if ($('#drawNames').prop('checked')) {
+    $('#drawNumsController').addClass('mdui-hidden');
+    $('#drawNamesController').removeClass('mdui-hidden');
+  } else if ($('#drawNums').prop('checked')) {
+    $('#drawNamesController').addClass('mdui-hidden');
+    $('#drawNumsController').removeClass('mdui-hidden');
+  }
   $('#radio').on('change', () => {
     if ($('#drawNames').prop('checked')) {
       $('#drawNumsController').addClass('mdui-hidden');
