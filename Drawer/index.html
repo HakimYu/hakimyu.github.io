@@ -32,7 +32,7 @@
   <!--Main-->
   <div class="mdui-container">
     <div class="mdui-text-center mdui-m-t-2">
-      <form>
+      <form id="radio">
         <label class="mdui-radio mdui-m-x-2">
           <input id="drawNames" type="radio" name="group1" checked/>
           <i class="mdui-radio-icon"></i>
@@ -45,13 +45,13 @@
         </label>
       </form>
     </div>
-    <div id="nameDrawer" class="mdui-m-t-1">
+    <div id="drawNamesController" class="mdui-m-t-1">
       <div class="mdui-row-md-3">
         <div class="mdui-col"></div>
         <div class="mdui-col">
           <div class="mdui-textfield mdui-textfield-floating-label">
             <label class="mdui-textfield-label">生成个数</label>
-            <input class="mdui-textfield-input" id="input1" type="text" pattern="^([1-4]?\d|50)$" required />
+            <input class="mdui-textfield-input" id="drawNamesQuantity" type="text" pattern="^([1-4]?\d|50)$" required />
             <div class="mdui-textfield-error">x∈[0,50]</div>
           </div>
         </div>
@@ -59,6 +59,22 @@
       </div>
       <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
       <div class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;" id="text1">
+      </div>
+    </div>
+    <div id="drawNumsController" class="mdui-hidden mdui-m-t-1">
+      <div class="mdui-row-md-3">
+        <div class="mdui-col"></div>
+        <div class="mdui-col">
+          <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">生成个数</label>
+            <input class="mdui-textfield-input" id="drawNumsQuantity" type="text" pattern="^[0-9]*$" required />
+            <div class="mdui-textfield-error">x∈R</div>
+          </div>
+        </div>
+        <div class="mdui-col"></div>
+      </div>
+      <button onclick="go()" class="mdui-m-t-2 mdui-center mdui-btn mdui-btn-raised">生成</button>
+      <div id="result" class="mdui-m-y-3 mdui-m-x-2 mdui-text-center mdui-typo-display-2" style="white-space: pre-line;">
       </div>
     </div>
   </div>
