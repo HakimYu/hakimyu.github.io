@@ -37,9 +37,12 @@ $(function () {
   });
 });
 
+//运行函数
 function go() {
+  //清空结果
   $('#result').text('');
   if ($('#drawNames').prop('checked')) {
+    
     randomNames();
   } else if ($('#drawNums').prop('checked')) {
     if (noRepeat) {
