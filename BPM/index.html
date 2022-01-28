@@ -2,96 +2,98 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-    <title>简易BPM测试器 - By FBS</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.css" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>简易BPM测试器 - By FBS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/css/mdui.css" rel="stylesheet">
 </head>
 
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto">
-    <div class="mdui-appbar mdui-appbar-fixed">
-        <div class="mdui-toolbar mdui-color-theme">
-            <a href="javascript:;" class="mdui-hidden mdui-btn mdui-btn-icon">
-                <i class="mdui-icon material-icons">menu</i>
-            </a>
-            <a href="javascript:;" class="mdui-typo-title">简易BPM(Beats Per Minute)测试器</a>
-            <div class="mdui-toolbar-spacer"></div>
-            <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-                <i class="mdui-icon material-icons">more_vert</i>
-            </a>
-        </div>
+  <div class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-theme">
+      <a href="javascript:;" class="mdui-hidden mdui-btn mdui-btn-icon">
+        <i class="mdui-icon material-icons">menu</i>
+      </a>
+      <a href="javascript:;" class="mdui-typo-title">简易BPM(Beats Per Minute)测试器</a>
+      <div class="mdui-toolbar-spacer"></div>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+        <i class="mdui-icon material-icons">more_vert</i>
+      </a>
     </div>
-    <noscript>
-        <p> 您必须开启Javascript才能使用这个页面 !</p>
-    </noscript>
+  </div>
+  <noscript>
+    <p> 您必须开启Javascript才能使用这个页面 !</p>
+  </noscript>
 
-    <div class="mdui-text-center">
-        <div class="mdui-card mdui-m-y-2 mdui-center" style="width: 70%; height: auto;">
-            <ul class="mdui-list mdui-center" style="width: 30%;">
-                <li class="mdui-list-item mdui-ripple">
-                    <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
-                        原始 BPM
-                        <div class="mdui-m-l-3" id="T_AVG" style="display: inline-block;"></div>
-                    </div>
-                </li>
-                <li class="mdui-list-item mdui-ripple">
-                    <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
-                        取整 BPM
-                        <div class="mdui-m-l-3" id="T_WHOLE" style="display: inline-block;"></div>
-                    </div>
-                </li>
-                <li class="mdui-list-item mdui-ripple">
-                    <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
-                        敲击次数
-                        <div class="mdui-m-l-3" id="T_TAP" style="display: inline-block;margin-left: 30px;"></div>
-                    </div>
-                </li>
+  <div class="mdui-text-center">
+    <div class="mdui-card mdui-m-y-2 mdui-center" style="width: 70%; height: auto;">
+      <ul class="mdui-list mdui-center" style="width: 30%;">
+        <li class="mdui-list-item mdui-ripple">
+          <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
+            原始 BPM
+            <div class="mdui-m-l-3" id="T_AVG" style="display: inline-block;"></div>
+          </div>
+        </li>
+        <li class="mdui-list-item mdui-ripple">
+          <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
+            取整 BPM
+            <div class="mdui-m-l-3" id="T_WHOLE" style="display: inline-block;"></div>
+          </div>
+        </li>
+        <li class="mdui-list-item mdui-ripple">
+          <div class="mdui-m-y-2 mdui-typo-body-2 mdui-float-left" style="display: inline-block;">
+            敲击次数
+            <div class="mdui-m-l-3" id="T_TAP" style="display: inline-block;margin-left: 30px;"></div>
+          </div>
+        </li>
 
-            </ul>
-            <p>跟着节奏敲击键盘任意键开始测试 BPM</p>
+      </ul>
+      <p>跟着节奏敲击键盘任意键开始测试 BPM</p>
 
-            <tr>
-                <td class="mdui-text-center">停止敲击
-                    <select class="mdui-select" id="wait" mdui-select="{position: 'top'}">
-                        <option value="1">1</option>
-                        <option value="2" SELECTED>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>秒后停止计时<br />
-                    <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-text-color-theme-accent mdui-m-y-2"
-                        onclick="ResetCount()">重置计时器</button>
-                </td>
-                </form>
-            </tr>
-        </div>
-
-        <tr>
-            <td>如果直接敲击没有反应，你可以使用这个文本框 &gt;
-                <input class="mdui-textfield-input" style="width: 30px;display: inline-block;" name="T_FOCUS" size=2 maxLength=1> &lt; 以激活键盘
-            </td>
-        </tr>
-
-        <p>(使用文本框敲击键盘时，超过5秒钟没有操作会结束计数)</p>
-
-
-        <div class="mdui-center mdui-typo-caption-opacity"
-            style="width: 100%;height: 40px;position:absolute;bottom: 20px;">
-            <hr>
-            <div class="mdui-center mdui-text-center">
-                <div style="size:-2">Engilsh Version &nbsp;
-                    <a href="http://www.all8.com/tools/bpm.htm">Click Here!</a>
-                    &nbsp; Translate by<a href="http://www.freejishu.com/">freejishu.</a>
-                    &nbsp; Rewritten by<a href="http://hakimyu.cf/"> HakimYU</a>
-                    with MDUI
-                </div>
-            </div>
-        </div>
+      <tr>
+        <td class="mdui-text-center">停止敲击
+          <select class="mdui-select" id="wait" mdui-select="{position: 'top'}">
+            <option value="1">1</option>
+            <option value="2" SELECTED>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>秒后停止计时<br />
+          <button class="mdui-btn mdui-ripple mdui-btn-raised mdui-text-color-theme-accent mdui-m-y-2" onclick="ResetCount()">重置计时器</button>
+        </td>
+        </form>
+      </tr>
     </div>
 
+    <tr>
+      <td>如果直接敲击没有反应，你可以使用这个文本框 &gt;
+        <input class="mdui-textfield-input" style="width: 30px;display: inline-block;" name="T_FOCUS" size=2 maxLength=1> &lt; 以激活键盘
+      </td>
+    </tr>
+
+    <p>(使用文本框敲击键盘时，超过5秒钟没有操作会结束计数)</p>
+
+
+    <div class="mdui-center mdui-typo-caption-opacity" style="width: 100%;height: 40px;position:absolute;bottom: 20px;">
+      <hr>
+      <div class="mdui-center mdui-text-center">
+        <div style="size:-2">Engilsh Version &nbsp;
+          <a href="http://www.all8.com/tools/bpm.htm">Click Here!</a>
+          &nbsp; Translate by<a href="http://www.freejishu.com/">freejishu.</a>
+          &nbsp; Rewritten by<a href="http://hakimyu.cf/"> HakimYU</a>
+          with MDUI
+        </div>
+      </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.js"></script>
-    <script src="BPM.js"></script>
+  </div>
+
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.js"></script>
+  <script src="BPM.js"></script>
 
 </body>
 
