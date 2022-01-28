@@ -13,7 +13,8 @@
   <title>首页</title>
 </head>
 
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-m-l-1 mdui-m-r-1">
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto"
+  style="overflow: auto;">
   <!--标题栏-->
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-theme">
@@ -28,36 +29,9 @@
       </ul>
     </div>
   </div>
-
-  <div class="mdui-m-a-1 mdui-m-y-2">
-    <div onclick="openUrl('SeatsArranger');" class="mdui-card mdui-ripple">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title">座位自动安排系统</div>
-        <div class="mdui-card-primary-subtitle">Seats Arrange System</div>
-      </div>
-      <div hidden class="mdui-card-content"></div>
-      <div class="mdui-card-actions">
-        <button onclick="openUrl('SeatsArranger');"
-          class="mdui-btn mdui-float-right mdui-text-color-theme-accent mdui-ripple">打开</button>
-      </div>
-    </div>
+  <div class="mdui-container">
+    <div id="cards"></div>
   </div>
-
-  <div class="mdui-m-a-1 mdui-m-y-2">
-    <div onclick="openUrl('Drawer');" class="mdui-card mdui-ripple">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title">抽签系统</div>
-        <div class="mdui-card-primary-subtitle">Drawing System</div>
-      </div>
-      <div hidden class="mdui-card-content"></div>
-      <div class="mdui-card-actions">
-        <button onclick="openUrl('Drawer');"
-          class="mdui-btn mdui-float-right mdui-text-color-pink mdui-ripple">打开</button>
-      </div>
-    </div>
-  </div>
-
-
   <script src="https://cdn.bootcdn.net/ajax/libs/mdui/1.0.2/js/mdui.min.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.11.1/vconsole.min.js"></script>
   <script>
