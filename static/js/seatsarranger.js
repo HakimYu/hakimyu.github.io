@@ -87,3 +87,7 @@ function changeQuestion() {
   result = num1 + num2;
   $('#question').text('回答问题：' + num1 + ' + ' + num2);
 }
+
+function openUrl(url) {
+  window.open(url, '_self');
+}
